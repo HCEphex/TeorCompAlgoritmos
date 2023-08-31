@@ -6,23 +6,25 @@
     <body>
         <script type="text/javascript">
             function calcularRusa(){
+                //variables
                 let multando = parseInt(document.getElementById("multiplicando").value);
                 let multador = parseInt(document.getElementById("multiplicador").value);
-                //var proced = "Valor inicial: " + num + "<br>";
-                //document.getElementById("calc").innerHTML = proced;
                 let auxando = parseInt(multando);
                 let auxador = parseInt(multador);
                 var contmult = 0;
                 var res = 0;
+                //Ciclo para duplicar el multiplicando mientras el multiplicador sea mayor o igual a uno
                 while(auxador >= 1){
+                    //si es impar
                     if(auxador % 2 != 0){
+                        //se actualiza el resultado
                         res = res + auxando;
-                        //document.getElementById("calc").innerHTML = auxador;
                     }
+                    //se actualiza el multiplicando entre dos y el multiplicador por dos
                     auxador = parseInt(auxador / 2);
                     auxando = auxando * 2;
                 }
-                //proced = proced + "Nuevo valor: " + aux + "<br>";
+                //Se imprime el resultado en el div con id calc
                 document.getElementById("calc").innerHTML = "Resultado de la multiplicación " + multando + " * " + multador + ": " + res;
             }
         </script>
