@@ -6,23 +6,32 @@
     <body>
         <script type="text/javascript">
             function calcularConst(){
+                //se declaran las variables sobre las cuales se trabajarán
                 let num = parseInt(document.getElementById("num").value);
                 var proced = "Valor inicial: " + num + "<br>";
                 document.getElementById("calc").innerHTML = proced;
                 var aux = parseInt(num);
+                //si el valor ingresado es 1 no se puede hacer ninguna operación
                 if(aux == 1){
                     document.getElementById("calc").innerHTML = num + "No se pueden realizar los cálculos con este valor";
                 }else{
+                    //Mientras el valor sea diferente de 1
                     while(aux != 1){
+                        //si es par
                         if(aux % 2 == 0 ){
+                            //N = N / 2
                             aux = aux / 2;
+                            //se actualiza la cadena con los pasos
                             proced = proced + "Nuevo valor: " + aux + "<br>";
+                        //si es impar
                         }else{
+                            //N = 3 * N + 1
                             aux = (3 * aux) + 1;
                             proced = proced + "Nuevo valor: " + aux + "<br>";
                         }
                         //document.getElementById("calc").innerHTML = "Nuevo numero: " + num;
                     }
+                    //Resultado mandado a imprimir en el div con id calc
                     document.getElementById("calc").innerHTML = proced + "Calculo finalizado";
                 }
             }
