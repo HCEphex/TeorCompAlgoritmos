@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Teoría Computacional: Constante de Kaprekar</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function analizaNumero(cadena){
+                if(cadena.length == 4){
+                    for(var i = 0; i < 4; i++){
+                        for(var j = (i + 1); j < 4; j++){
+                            if(cadena.charAt(i) == cadena.charAt(j)){
+                                //document.getElementById("calc").innerHTML = "Avr pinche joto te dije 4 dígitos distintos >:v";
+                                return false;
+                            }
+                        }
+                    }
+                    return true;
+                }else{
+                    //document.getElementById("calc").innerHTML = "4 dígitos verga";
+                    return false;
+                }
+            }
+            function calcularKaprekar(){
+                let cadena = document.getElementById("num").value;
+                var inicial = cadena;
+                let inversa = "0000";
+                var auxnum = 0;
+                var auxnuminv = 0;
+                var res = 0;
+                var j = 3;
+                var ciclos = 0;
+                var bandera = new Boolean(true);
+                //var kaprekar = new Boolean(false);
+                bandera = analizaNumero(cadena);
+                if(bandera){
+                    while(parseInt(res) != 6174){
+                        for(var i = 0; i < 4; i++){
+                            inversa = inversa.replace(inversa.charAt(i), cadena.charAt(j))
+                            j--;
+                        }
+                        auxnum = parseInt(cadena);
+                        auxnuminv = parseInt(inversa);
+                        res = auxnum - auxnuminv;
+                        if(res < 0){
+                            res = res * (-1);
+                        }
+                        cadena = res.toString();
+                        j = 3;
+                        ciclos++;
+                        /*if(res == 6174){
+                            kaprekar = true;
+                        }*/
+                        //document.getElementById("calc").innerHTML = "Numero: " + auxnum + "<br>Inverso: " + auxnuminv + "<br>Resultado: " + res + "<br>Nuevo valor: " + cadena + "<br>J: " + j + "<br>Ciclos: " + ciclos;
+                        //res = 6174;
+                    }
+                    document.getElementById("calc").innerHTML = "Constante de Kaprekar obtenida para el numero " + inicial + ".<br>Resultado: " + res + "<br>Ciclos requeridos: " + ciclos + "<br>";
+                }else{
+                    document.getElementById("calc").innerHTML = "Número no válido.";
+                }
+            }
+        </script>
+        <div id="form">
+            Constante de Kaprekar<br>
+            Ingrese un número de 4 dígitos todos distintos: 
+            <input type="text" id="num" required><br>
+            <button onclick="calcularKaprekar()">Calcular</button>
+        </div>
+        <div id="calc">
+            Cálculo de constate de Kaprekar<br><br>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Teoría Computacional: Multiplicación Egipcia</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function calcularEgipcia(){
+                let multando = parseInt(document.getElementById("multiplicando").value);
+                let multador = parseInt(document.getElementById("multiplicador").value);
+                //var proced = "Valor inicial: " + num + "<br>";
+                //document.getElementById("calc").innerHTML = proced;
+                let auxando = parseInt(multando);
+                var auxador = 1;
+                var contmult = 0;
+                var res = 0
+                while((auxador * 2) < multador){
+                    auxando = auxando * 2;
+                    auxador = auxador * 2;
+                }
+                //document.getElementById("calc").innerHTML = "Multiplicando: " + auxando + "<br>Multiplicador: " + auxador + "<br>";
+                //Hasta aquí si jala we
+                while(contmult < multador){
+                    if((contmult + auxador) <= multador){
+                        contmult = contmult + auxador;
+                        res = res + auxando;
+                    }
+                    auxando = parseInt(auxando / 2);
+                    auxador = parseInt(auxador / 2);
+                }
+                //proced = proced + "Nuevo valor: " + aux + "<br>";
+                document.getElementById("calc").innerHTML = "Resultado de la multiplicación " + multando + " * " + multador + ": " + res;
+            }
+        </script>
+        <div id="form">
+            Multiplicación Egipcia<br>
+            Ingrese el multiplicando: 
+            <input type="text" id="multiplicando" required><br>
+            Ingrese el multiplicador: 
+            <input type="text" id="multiplicador" required><br>
+            <button onclick="calcularEgipcia()">Calcular</button>
+        </div>
+        <div id="calc">
+            Cálculo de multiplicación Egipcia<br><br>
+        </div>
+    </body>
+</html>

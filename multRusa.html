@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Teoría Computacional: Multiplicación Rusa</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function calcularRusa(){
+                let multando = parseInt(document.getElementById("multiplicando").value);
+                let multador = parseInt(document.getElementById("multiplicador").value);
+                //var proced = "Valor inicial: " + num + "<br>";
+                //document.getElementById("calc").innerHTML = proced;
+                let auxando = parseInt(multando);
+                let auxador = parseInt(multador);
+                var contmult = 0;
+                var res = 0;
+                while(auxador >= 1){
+                    if(auxador % 2 != 0){
+                        res = res + auxando;
+                        //document.getElementById("calc").innerHTML = auxador;
+                    }
+                    auxador = parseInt(auxador / 2);
+                    auxando = auxando * 2;
+                }
+                //proced = proced + "Nuevo valor: " + aux + "<br>";
+                document.getElementById("calc").innerHTML = "Resultado de la multiplicación " + multando + " * " + multador + ": " + res;
+            }
+        </script>
+        <div id="form">
+            Multiplicación Rusa<br>
+            Ingrese el multiplicando: 
+            <input type="text" id="multiplicando" required><br>
+            Ingrese el multiplicador: 
+            <input type="text" id="multiplicador" required><br>
+            <button onclick="calcularRusa()">Calcular</button>
+        </div>
+        <div id="calc">
+            Cálculo de multiplicación Rusa<br><br>
+        </div>
+    </body>
+</html>
