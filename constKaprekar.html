@@ -5,8 +5,11 @@
     </head>
     <body>
         <script type="text/javascript">
+            //función para analizar que la cadena de números ingresada sea válida
             function analizaNumero(cadena){
+                //si la longitud de la cadena es de 4 caracteres
                 if(cadena.length == 4){
+                    //Ciclos para evaluar que cada número sea distinto entre ellos
                     for(var i = 0; i < 4; i++){
                         for(var j = (i + 1); j < 4; j++){
                             if(cadena.charAt(i) == cadena.charAt(j)){
@@ -19,7 +22,9 @@
                     return false;
                 }
             }
+            //función para calcular la constante de Kaprekar
             function calcularKaprekar(){
+                //variables
                 let cadena = document.getElementById("num").value;
                 var inicial = cadena;
                 let inversa = "0000";
@@ -30,20 +35,29 @@
                 var ciclos = 0;
                 var bandera = new Boolean(true);
                 //var kaprekar = new Boolean(false);
+                //se llama a la función para comprobar que la cadena cumpla con las caracteríticas
+                //(4 caracteres diferentes entre ellos
                 bandera = analizaNumero(cadena);
                 if(bandera){
+                    //Mientras la variable resultado sea diferente al valor deseado 6174
                     while(parseInt(res) != 6174){
+                        //ciclo para invertir el número original y guardarlo en la variable inversa
                         for(var i = 0; i < 4; i++){
                             inversa = inversa.replace(inversa.charAt(i), cadena.charAt(j))
                             j--;
                         }
+                        //se convierten a enteros y se guardan en variables
                         auxnum = parseInt(cadena);
                         auxnuminv = parseInt(inversa);
+                        //se realiza la resta
                         res = auxnum - auxnuminv;
+                        //en caso de que el resultado sea negativo (menor a cero) se multiplica por un -1
                         if(res < 0){
                             res = res * (-1);
                         }
+                        //se actualiza la variable tipo string con el resultado de la resta
                         cadena = res.toString();
+                        //se reinicia la variable para invertir la cadena y se agrega un ciclo
                         j = 3;
                         ciclos++;
                         /*if(res == 6174){
@@ -52,6 +66,7 @@
                         //document.getElementById("calc").innerHTML = "Numero: " + auxnum + "<br>Inverso: " + auxnuminv + "<br>Resultado: " + res + "<br>Nuevo valor: " + cadena + "<br>J: " + j + "<br>Ciclos: " + ciclos;
                         //res = 6174;
                     }
+                    //se imprime el resultado
                     document.getElementById("calc").innerHTML = "Constante de Kaprekar obtenida para el numero " + inicial + ".<br>Resultado: " + res + "<br>Ciclos requeridos: " + ciclos + "<br>";
                 }else{
                     document.getElementById("calc").innerHTML = "Número no válido.";
