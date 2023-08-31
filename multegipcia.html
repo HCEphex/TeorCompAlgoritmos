@@ -6,29 +6,31 @@
     <body>
         <script type="text/javascript">
             function calcularEgipcia(){
+                //variables
                 let multando = parseInt(document.getElementById("multiplicando").value);
                 let multador = parseInt(document.getElementById("multiplicador").value);
-                //var proced = "Valor inicial: " + num + "<br>";
-                //document.getElementById("calc").innerHTML = proced;
                 let auxando = parseInt(multando);
                 var auxador = 1;
                 var contmult = 0;
                 var res = 0
+                //ciclo para obtener el doble máximo del multiplicando en base al multiplicador con valor 1 sin que sea mayor o igual al ingresado
                 while((auxador * 2) < multador){
                     auxando = auxando * 2;
                     auxador = auxador * 2;
                 }
-                //document.getElementById("calc").innerHTML = "Multiplicando: " + auxando + "<br>Multiplicador: " + auxador + "<br>";
-                //Hasta aquí si jala we
+                //Ciclo para obtener el resultado controlando que la suma de los dobles del multiplicador no supere al multiplicador original
                 while(contmult < multador){
+                    //mientras la suma del multiplicador sea menor o igual al multiplicador original
                     if((contmult + auxador) <= multador){
+                        //actualiza el resultado y suma los multiplicadores
                         contmult = contmult + auxador;
                         res = res + auxando;
                     }
+                    //se actualiza el multiplicando y el multiplicador ambos divididos entre 2
                     auxando = parseInt(auxando / 2);
                     auxador = parseInt(auxador / 2);
                 }
-                //proced = proced + "Nuevo valor: " + aux + "<br>";
+                //se imprime el resultado en el div con id calc
                 document.getElementById("calc").innerHTML = "Resultado de la multiplicación " + multando + " * " + multador + ": " + res;
             }
         </script>
