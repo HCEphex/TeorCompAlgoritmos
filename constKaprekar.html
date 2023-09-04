@@ -36,7 +36,7 @@
                 var bandera = new Boolean(true);
                 //var kaprekar = new Boolean(false);
                 //se llama a la función para comprobar que la cadena cumpla con las caracteríticas
-                //(4 caracteres diferentes entre ellos
+                //(4 caracteres diferentes entre ellos)
                 bandera = analizaNumero(cadena);
                 if(bandera){
                     //Mientras la variable resultado sea diferente al valor deseado 6174
@@ -60,11 +60,6 @@
                         //se reinicia la variable para invertir la cadena y se agrega un ciclo
                         j = 3;
                         ciclos++;
-                        /*if(res == 6174){
-                            kaprekar = true;
-                        }*/
-                        //document.getElementById("calc").innerHTML = "Numero: " + auxnum + "<br>Inverso: " + auxnuminv + "<br>Resultado: " + res + "<br>Nuevo valor: " + cadena + "<br>J: " + j + "<br>Ciclos: " + ciclos;
-                        //res = 6174;
                     }
                     //se imprime el resultado en el div con el id calc
                     document.getElementById("calc").innerHTML = "Constante de Kaprekar obtenida para el numero " + inicial + ".<br>Resultado: " + res + "<br>Ciclos requeridos: " + ciclos + "<br>";
